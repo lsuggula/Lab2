@@ -50,31 +50,7 @@ public class PollServer {
 
             logger.info("client Request: Mod Id: " + req.getModeratorId());
             final AtomicInteger counter = new AtomicInteger(i++);
-            //converter(i++);
-            /*public String converter(int num)
-            {
-            String str="";
-            while(num>0)
-            {
-            int t =0;
-            t=num%36;
-            if(t>9)
-            {
-                
-                char t2=(char)(55+t);
-                str=t2+str;
-            }
-            else
-            {
-                str=t+str;
-            }
-            num=num/36;
-            }
-            return str;
-            }*/
             String poll_id = converter(i);
-            
-            //String poll_id = Integer.toHexString(counter.getAndIncrement());
             PollResponse reply = PollResponse.newBuilder().setId(poll_id).build();
             responseObserver.onValue(reply);
             responseObserver.onCompleted();
